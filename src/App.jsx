@@ -443,18 +443,14 @@ function App() {
               </div>
 
               <div className="social-links">
-                <a href="#" className="social-link">
+                <a href="https://www.linkedin.com/in/abhisheknagare9/" className="social-link">
                   <i className="fab fa-linkedin-in"></i>
                 </a>
-                <a href="#" className="social-link">
+                <a href="https://github.com/Abhinagare97" className="social-link">
                   <i className="fab fa-github"></i>
                 </a>
-                <a href="#" className="social-link">
-                  <i className="fab fa-twitter"></i>
-                </a>
-                <a href="#" className="social-link">
-                  <i className="fab fa-instagram"></i>
-                </a>
+                
+              
               </div>
             </div>
 
