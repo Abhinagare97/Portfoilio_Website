@@ -4,6 +4,7 @@ import './App.css'
 
 function App() {
   const [isScrolled, setIsScrolled] = useState(false)
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
   const [formData, setFormData] = useState({
     name: '',
@@ -107,7 +108,13 @@ function App() {
         behavior: 'smooth',
         block: 'start'
       })
+      setIsMenuOpen(false) // Close menu after clicking a link
     }
+  }
+
+  // Toggle menu
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen)
   }
 
   return (
@@ -124,12 +131,23 @@ function App() {
             <li><a href="#projects" onClick={(e) => { e.preventDefault(); scrollToSection('projects') }}>Projects</a></li>
             <li><a href="#contact" onClick={(e) => { e.preventDefault(); scrollToSection('contact') }}>Contact</a></li>
           </ul>
-          <div className="mobile-menu">
+          <div className={`mobile-menu ${isMenuOpen ? 'open' : ''}`} onClick={toggleMenu}>
             <span></span>
             <span></span>
             <span></span>
           </div>
         </div>
+        {/* Mobile Menu Dropdown */}
+        {isMenuOpen && (
+          <div className="mobile-menu-content">
+            <a href="#home" onClick={(e) => { e.preventDefault(); scrollToSection('home') }}>Home</a>
+            <a href="#about" onClick={(e) => { e.preventDefault(); scrollToSection('about') }}>About</a>
+            <a href="#skills" onClick={(e) => { e.preventDefault(); scrollToSection('skills') }}>Skills</a>
+            <a href="#experience" onClick={(e) => { e.preventDefault(); scrollToSection('experience') }}>Experience</a>
+            <a href="#projects" onClick={(e) => { e.preventDefault(); scrollToSection('projects') }}>Projects</a>
+            <a href="#contact" onClick={(e) => { e.preventDefault(); scrollToSection('contact') }}>Contact</a>
+          </div>
+        )}
       </nav>
 
       {/* Hero Section */}
@@ -187,11 +205,11 @@ function App() {
                   <div className="stat-label">Years Experience</div>
                 </div>
                 <div className="stat-item">
-                  <div className="stat-number">3</div>
+                  <div className="stat-number">20</div>
                   <div className="stat-label">Major Projects</div>
                 </div>
                 <div className="stat-item">
-                  <div className="stat-number">4</div>
+                  <div className="stat-number">5</div>
                   <div className="stat-label">Certifications</div>
                 </div>
                 <div className="stat-item">
@@ -245,31 +263,41 @@ function App() {
               <div className="skill-card-icon">
                 <i className="fas fa-database"></i>
               </div>
-              <h4>Database & Cloud</h4>
-              <p>Managing data with various database systems and deploying applications to cloud platforms.</p>
+              <h4>Database & Tools</h4>
+              <p>Managing data with various database systems and Utilizing modern development tools and workflows.</p>
               <div className="skill-list">
                 <span className="skill-tag">SQL Server</span>
                 <span className="skill-tag">MySQL</span>
                 <span className="skill-tag">SSMS</span>
-                <span className="skill-tag">AWS</span>
-                <span className="skill-tag">Azure</span>
+               
                 <span className="skill-tag">ADO.NET</span>
-              </div>
-            </div>
-
-            <div className="skill-card">
-              <div className="skill-card-icon">
-                <i className="fas fa-tools"></i>
-              </div>
-              <h4>Tools & Technologies</h4>
-              <p>Utilizing modern development tools and workflows for efficient and collaborative development.</p>
-              <div className="skill-list">
-                <span className="skill-tag">Git</span>
-                <span className="skill-tag">GitHub</span>
                 <span className="skill-tag">Visual Studio</span>
                 <span className="skill-tag">VS Code</span>
                 <span className="skill-tag">JWT</span>
                 <span className="skill-tag">Postman</span>
+              </div>
+            </div>
+
+    
+
+            <div className="skill-card">
+              <div className="skill-card-icon">
+                <i className="fas fa-cloud"></i>
+              </div>
+              <h4>DevOps & Cloud</h4>
+              <p>Automation, CI/CD pipelines, and infrastructure as code.</p>
+              <div className="skill-list">
+                <span className="skill-tag">Docker</span>
+                <span className="skill-tag">Kubernetes</span>
+                <span className="skill-tag">Terraform</span>
+                <span className="skill-tag">Ansible</span>
+                <span className="skill-tag">Jenkins</span>
+                <span className="skill-tag">GitHub Actions</span>
+                <span className="skill-tag">CI/CD</span>
+                <span className="skill-tag">Prometheus</span>
+                <span className="skill-tag">Grafana</span>
+                 <span className="skill-tag">AWS</span>
+                <span className="skill-tag">Azure</span>
               </div>
             </div>
           </div>
@@ -329,6 +357,44 @@ function App() {
         </div>
       </section>
 
+      {/* Certifications Section */}
+      <section id="certifications" className="certifications">
+        <div className="container">
+          <h2 className="section-title">Certifications</h2>
+          <div className="cert-grid">
+            <div className="cert-card">
+              <div className="cert-icon"><i className="fab fa-google"></i></div>
+              <h4>Associate Cloud Engineer Certification</h4>
+              <div className="cert-issuer">Google Cloud Platform (GCP)</div>
+            </div>
+
+            <div className="cert-card">
+              <div className="cert-icon"><i className="fab fa-aws"></i></div>
+              <h4>AWS Certified Cloud Practitioner</h4>
+              <div className="cert-issuer">Amazon Web Services (AWS)</div>
+            </div>
+
+            <div className="cert-card">
+              <div className="cert-icon"><i className="fab fa-microsoft"></i></div>
+              <h4>Microsoft Certified: Azure Fundamentals</h4>
+              <div className="cert-issuer">Microsoft</div>
+            </div>
+
+            <div className="cert-card">
+              <div className="cert-icon"><i className="fab fa-github"></i></div>
+              <h4>GitHub Foundations</h4>
+              <div className="cert-issuer">GitHub</div>
+            </div>
+
+            <div className="cert-card">
+              <div className="cert-icon"><i className="fab fa-github"></i></div>
+              <h4>GitHub Copilot</h4>
+              <div className="cert-issuer">GitHub</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Projects Section */}
       <section id="projects" className="projects">
         <div className="container">
@@ -363,6 +429,60 @@ function App() {
 
             <div className="project-card">
               <div className="project-image">
+                <i className="fas fa-network-wired"></i>
+              </div>
+              <div className="project-content">
+                <h4>CI/CD Pipeline for Customer Management System</h4>
+                <p>Implemented automated CI/CD using GitHub Actions to build, test, and deploy the Customer Management System to staging with Docker and Kubernetes.</p>
+                <div className="project-tech">
+                  <span className="tech-tag">GitHub Actions</span>
+                  <span className="tech-tag">Docker</span>
+                  <span className="tech-tag">Kubernetes</span>
+                  <span className="tech-tag">Helm</span>
+                  <span className="tech-tag">CI/CD</span>
+                </div>
+                <div className="project-links">
+                  <a href="#" className="project-link">
+                    <i className="fas fa-external-link-alt"></i>
+                    Pipeline Logs
+                  </a>
+                  <a href="#" className="project-link secondary">
+                    <i className="fab fa-github"></i>
+                    Repo
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div className="project-card">
+              <div className="project-image">
+                <i className="fab fa-github"></i>
+              </div>
+              <div className="project-content">
+                <h4>Portfolio CI/CD (This Website)</h4>
+                <p>Configured GitHub Actions to lint, build, run tests, and deploy this portfolio site automatically on merge — includes cache and artifact optimizations.</p>
+                <div className="project-tech">
+                  <span className="tech-tag">GitHub Actions</span>
+                  <span className="tech-tag">Vite</span>
+                  <span className="tech-tag">Node.js</span>
+                  <span className="tech-tag">Netlify</span>
+                  <span className="tech-tag">CI/CD</span>
+                </div>
+                <div className="project-links">
+                  <a href="#" className="project-link">
+                    <i className="fas fa-external-link-alt"></i>
+                    Deployment
+                  </a>
+                  <a href="#" className="project-link secondary">
+                    <i className="fab fa-github"></i>
+                    Actions Workflow
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div className="project-card">
+              <div className="project-image">
                 <i className="fas fa-wallet"></i>
               </div>
               <div className="project-content">
@@ -374,33 +494,6 @@ function App() {
                   <span className="tech-tag">React</span>
                   <span className="tech-tag">JWT Auth</span>
                   <span className="tech-tag">REST API</span>
-                </div>
-                <div className="project-links">
-                  <a href="#" className="project-link">
-                    <i className="fas fa-external-link-alt"></i>
-                    Live Demo
-                  </a>
-                  <a href="#" className="project-link secondary">
-                    <i className="fab fa-github"></i>
-                    GitHub
-                  </a>
-                </div>
-              </div>
-            </div>
-
-            <div className="project-card">
-              <div className="project-image">
-                <i className="fas fa-hand-paper"></i>
-              </div>
-              <div className="project-content">
-                <h4>Sign Language Recognition System</h4>
-                <p>Real-time ASL recognition system using computer vision and machine learning technologies for accurate sign language interpretation.</p>
-                <div className="project-tech">
-                  <span className="tech-tag">Python</span>
-                  <span className="tech-tag">OpenCV</span>
-                  <span className="tech-tag">MediaPipe</span>
-                  <span className="tech-tag">Random Forest</span>
-                  <span className="tech-tag">ML</span>
                 </div>
                 <div className="project-links">
                   <a href="#" className="project-link">
