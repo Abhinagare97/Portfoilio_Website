@@ -595,7 +595,7 @@ function App() {
       {/* Footer */}
       <footer>
         <div className="container">
-          <p>&copy; 2024 Abhishek Nagare. All rights reserved. Built with React and lots of ☕</p>
+          <p>&copy; 2026 Abhishek Nagare. All rights reserved. Built with React and lots of ☕</p>
         </div>
       </footer>
     </>
